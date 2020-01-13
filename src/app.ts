@@ -1,6 +1,7 @@
 import express,{ Application } from 'express';
 import morgan from 'morgan';
-
+import exphbs from 'express-handlebars';
+import path from 'path';
 //Routes
 import IndexRoutes from "./routes/routes";
 import PostRoutes from "./routes/post.routers";
@@ -19,6 +20,14 @@ export class App{
 
     setting(){
         this.app.set('port',this.port || process.env.port || 3000);
+        this.app.set('views',path.join(__dirname,'views'));
+        this.app.engine('.hbs',exphbs({
+            layoutsDir: path.join(this.app.get('views'),'layouts'),
+            partialsDir: path.join(this.app.get('views'),'partials'),
+            defaultLayout: 'main',
+            extname: '.hbs'
+        }));
+        this.app.set('view engine','.hbs');
     }
 
     middlewares(){
@@ -29,6 +38,7 @@ export class App{
     routes(){
         this.app.use(IndexRoutes);
         this.app.use('/posts',PostRoutes);
+        this.app.use(express.static(path.join(__dirname,'public')));
     }
 
     async listen(){
