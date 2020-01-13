@@ -10,17 +10,20 @@ export async function getPosts(req: Request, res: Response): Promise<Response>{
 }
 
 export async function createPost(req: Request, res: Response){
-    const newPost: Post = req.body;
+    //const newPost: Post = req.body;
+    const inputdata : Post = req.body;
     const conn = await connect();
-    await conn.query('INSERT INTO datauser SET ?',[newPost]);
+    console.log(inputdata);
+    //await conn.query('INSERT INTO datauser SET ?',[newPost]);
+    await conn.query('INSERT INTO datauser SET ?',[inputdata]);
     return res.json({
         message: 'Post Created'
     });
 }
 
-export async function getPost(req: Request, res: Response): Promise<Response>{
+/*export async function getPost(req: Request, res: Response): Promise<Response>{
     const id = req.params.postId;
     const conn = await connect();
     const posts = await conn.query('SELECT * FROM datauser WHERE id = ?',[id]);
     return res.json(posts[0]);
-}
+}*/

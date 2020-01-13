@@ -33,11 +33,13 @@ export class App{
     middlewares(){
         this.app.use(morgan('dev'));
         this.app.use(express.json());
+        this.app.use(express.urlencoded({extended : false}));
     }
 
     routes(){
         this.app.use(IndexRoutes);
         this.app.use('/posts',PostRoutes);
+        this.app.use('/tasks',PostRoutes);
         this.app.use(express.static(path.join(__dirname,'public')));
     }
 
