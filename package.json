@@ -4,14 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "ts:watch": "tsc -w",
-    "ts:build": "tsc",
-    "serve": "nodemon dist/server.js",
-    "watch": "concurrently \"npm run ts:watch\" \"npm run serve\"",
-    "build": "npm run ts:build",
-    "prod:serve": "node dist/server.js",
-    "start": "npm run build && npm run prod:serve",
-    "tslint": "tslint -c tslint.json -p tsconfig.json"
+    "start": "./node-modules/.bin/ts-node ./src/index.ts",
+    "build": "tsc",
+    "dev": "nodemon src/index.ts --exec ts-node"
   },
   "author": "",
   "license": "ISC",
@@ -30,7 +25,6 @@
     "@types/mysql2": "github:types/mysql2",
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.1",
-    "typescript": "^3.7.4",
-    "winston": "^2.3.1"
+    "typescript": "^3.7.4"
   }
 }
