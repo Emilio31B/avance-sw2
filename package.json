@@ -12,8 +12,7 @@
     "prod:serve": "node dist/server.js",
     "start": "npm run build && npm run prod:serve",
     "tslint": "tslint -c tslint.json -p tsconfig.json"
-  }
-  ,
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -31,6 +30,7 @@
     "@types/mysql2": "github:types/mysql2",
     "nodemon": "^2.0.2",
     "ts-node": "^8.6.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.4",
+    "winston": "^2.3.1"
   }
 }
